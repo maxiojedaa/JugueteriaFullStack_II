@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creacion de Usuario</title>
+     <!-- Importo los el css para las clases de este mismo -->
+  <link rel="stylesheet" href="../Css/Estilos.css">
+  <!--Importo el link de boorstrap-->>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-secondary d-flex justify-content-center align-items-center vh-100">
+    <!--Con esto hago un contorno cuadrado para que el texto no se vea completamente gris-->>
+   <div class="card p-4 shadow rounded" style="width: 400px;"> 
+
+    <form id="formRegistro" action="#">
+
+        <h2 class="text-center mb-4">CREACION DE CUENTA</h2>
+
+        <!--Con esto guardo el nombre-->>
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Ingrese su nombre:</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Enter name" required>
+        </div>
+
+        <!--Con esto guardo el email-->>
+        <div class="mb-3">
+            <label for="email" class="form-label">Ingrese su email:</label>
+            <!--De esta forma asigno valores unicos que me van a servir para la validacion-->>
+            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
+        </div>
+
+        <!--Aqui guardo la contraseña-->>
+        <div class="mb-3">
+            <label for="pwd1" class="form-label">Ingrese su password:</label>
+            <!--Aqui pasa exactamente lo mismo nomas que le di el nombre de psw1-->>
+            <input type="password" class="form-control" id="pwd1" placeholder="Enter password" name="pswd1" required>
+        </div>
+
+        <!--Pido que se ingrese denuevo la contraseña-->>
+        <div class="mb-3">
+            <label for="pwd2" class="form-label">Ingrese nuevamente su password:</label>
+            <!--Y aca le di el nombre de pswd2-->>
+            <input type="password" class="form-control" id="pwd2" placeholder="Enter password" name="pswd2" required>
+        </div>
+
+        <div class="mb-3 mt-3">
+            <button type="submit" class="botonCuenta w-100 mt-2">Crear Cuenta</button>
+        </div>
+
+
+    </form>
+
+    <!-- Vinculamos el script JS antes de cerrar el body -->
+    <script src="../JavaScript/validar.js"></script>
+</body>
+</html>

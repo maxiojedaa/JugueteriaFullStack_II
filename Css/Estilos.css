@@ -1,0 +1,25 @@
+body{
+    background-color: gray;
+}
+
+.colorBarra{
+    background-color: aqua;
+}
+
+.botonCuenta{
+    background-color: blue;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    padding: 8px 16px;
+}
+
+.imagen-carrusel{
+    height: 300px;
+    object-fit: cover;
+}
+
+.carrucelProducto{
+    border: 2xp solid #ddd;
+    background-color: #f8f9fa;
+}
