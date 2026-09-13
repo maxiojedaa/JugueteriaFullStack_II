@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Robot de Madera - Juguetería Chile</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- CSS del proyecto -->
+    <link rel="stylesheet" href="../Css/Estilos.css">
+</head>
+
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav class="navbar navbar-expand-lg colorBarra px-4">
+
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+
+            <!-- Navegación -->
+            <div class="d-flex flex-wrap gap-3">
+
+                <a class="nav-link fw-bold text-dark" href="PaginaPrincipal.html#categorias">
+                    CATEGORIAS
+                </a>
+
+                <a class="nav-link fw-bold text-dark" href="PaginaPrincipal.html#novedades">
+                    NOVEDADES
+                </a>
+
+                <a class="nav-link fw-bold text-dark" href="PaginaPrincipal.html#ofertas">
+                    OFERTAS
+                </a>
+
+                <a class="nav-link fw-bold text-dark" href="PaginaPrincipal.html#noticias">
+                    NOTICIAS
+                </a>
+
+            </div>
+
+
+            <!-- Iconos Usuario y Carrito -->
+            <div class="d-flex align-items-center gap-3">
+
+                <!-- Perfil Usuario -->
+                <div class="position-relative">
+
+                    <i id="iconoPerfil" class="bi bi-person text-dark fs-4" style="cursor:pointer;" title="Mi Cuenta">
+                    </i>
+
+                    <div id="menuUsuario" class="card shadow p-2 position-absolute end-0 mt-2 d-none"
+                        style="width: 180px; z-index: 1000;">
+
+                        <p id="nombreUsuarioMenu" class="fw-bold mb-1 text-center small text-truncate">
+                        </p>
+
+                        <hr class="my-1">
+
+                        <button id="btnVerPerfil" class="btn btn-sm btn-light text-start w-100 mb-1">
+                            Ver Perfil
+                        </button>
+
+                        <button id="btnCerrarSesion" class="btn btn-sm btn-danger text-start w-100">
+                            Cerrar Sesión
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Carrito -->
+                <button class="btn p-0 border-0 text-dark fs-4" data-bs-toggle="modal" data-bs-target="#modalCarrito"
+                    onclick="renderizarCarritoModal()" title="Ver Carrito">
+
+                    <i class="bi bi-bag"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Detalle del producto -->
+    <div class="container my-5">
+
+        <div class="row g-5 align-items-center">
+
+            <!-- Imagen -->
+            <div class="col-md-6">
+
+                <img id="imagenProducto" src="" class="img-fluid rounded shadow" alt="Producto">
+
+            </div>
+
+
+            <!-- Información -->
+            <div class="col-md-6">
+
+                <h1 id="nombreProducto" class="fw-bold"></h1>
+
+                <h3 id="precioProducto" class="text-primary my-3"></h3>
+
+                <p id="descripcionProducto" class="text-muted"></p>
+
+                <hr>
+
+                <p>
+                    <strong>Disponibilidad:</strong>
+                    <span id="stockProducto"></span>
+                </p>
+
+                <p>
+                    <strong>Categoría:</strong>
+                    <span id="categoriaProducto"></span>
+                </p>
+
+                <button id="btnAgregarCarrito" class="btn btn-primary btn-lg w-100 mt-3">
+
+                    <i class="bi bi-cart-plus"></i>
+                    Agregar al Carrito
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- JavaScript del carrito -->
+    <script src="../JavaScript/Carrito.js"></script>
+
+    <!-- JavaScript del menú de usuario -->
+    <script src="../JavaScript/MenuDesplegable.js"></script>
+
+    <!-- JavaScript del detalle del producto -->
+    <script src="../JavaScript/DetalleProducto.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
+
+
+</body>
+
+
+</html>
