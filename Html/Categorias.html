@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categorías - Jugueteria Chile</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="../Css/Estilos.css">
+</head>
+
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav class="navbar navbar-expand-lg colorBarra px-4">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+
+            <!-- Navegación -->
+            <div class="d-flex flex-wrap gap-3">
+                <a class="nav-link fw-bold text-dark active" href="Categorias.html">CATEGORIAS ▾</a>
+                <a class="nav-link fw-bold text-dark" href="Novedades.html">NOVEDADES</a>
+                <a class="nav-link fw-bold text-dark" href="Ofertas.html">OFERTAS</a>
+                <a class="nav-link fw-bold text-dark" href="Noticias.html">NOTICIAS</a>
+            </div>
+
+            <!-- Iconos (Usuario y Carrito) -->
+            <div class="d-flex align-items-center gap-3">
+                
+                <!-- Perfil Usuario -->
+                <div class="position-relative">
+                    <i id="iconoPerfil" class="bi bi-person text-dark fs-4" style="cursor: pointer;" title="Mi Cuenta"></i>
+                    <div id="menuUsuario" class="card shadow p-2 position-absolute end-0 mt-2 d-none" style="width: 180px; z-index: 1000;">
+                        <p id="nombreUsuarioMenu" class="fw-bold mb-1 text-center small text-truncate"></p>
+                        <hr class="my-1">
+                        <button id="btnVerPerfil" class="btn btn-sm btn-light text-start w-100 mb-1">Ver Perfil</button>
+                        <button id="btnCerrarSesion" class="btn btn-sm btn-danger text-start w-100">Cerrar Sesión</button>
+                    </div>
+                </div>
+
+                <!-- Botón Abrir Carrito -->
+                <button class="btn p-0 border-0 text-dark fs-4" data-bs-toggle="modal" data-bs-target="#modalCarrito" onclick="renderizarCarritoModal()" title="Ver Carrito">
+                    <i class="bi bi-bag"></i>
+                </button>
+
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- SECCIÓN DE CATEGORÍAS -->
+    <div class="container my-5">
+        <h2 class="text-center fw-bold mb-2">Categorías de Productos</h2>
+        <p class="text-center text-muted mb-4">Explora nuestro catálogo organizado por tipos de juguetes.</p>
+
+        <div class="row g-4 justify-content-center">
+
+            <!-- Categoría 1: Artes -->
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm text-center">
+                    <img src="../Img/Pinta tu juguete 1.jpe" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Artes">
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <div>
+                            <h4 class="card-title fw-bold">Artes</h4>
+                            <p class="card-text text-muted">Kits de pintura, manualidades y herramientas para despertar la creatividad.</p>
+                        </div>
+                        <a href="DetalleProducto.html?id=1" class="btn btn-outline-primary w-100 mt-3">
+                            <i class="bi bi-palette me-1"></i> Ver Productos
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categoría 2: Posables -->
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm text-center">
+                    <img src="../Img/Robot madera 1.jpe" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Posables">
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <div>
+                            <h4 class="card-title fw-bold">Posables</h4>
+                            <p class="card-text text-muted">Figuras articuladas y robots diseñados para adoptar diferentes posturas.</p>
+                        </div>
+                        <a href="DetalleProducto.html?id=2" class="btn btn-outline-primary w-100 mt-3">
+                            <i class="bi bi-robot me-1"></i> Ver Productos
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categoría 3: Estatuillas -->
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm text-center">
+                    <img src="../Img/Pinta tu juguete 2.jpg" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Estatuillas">
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <div>
+                            <h4 class="card-title fw-bold">Estatuillas</h4>
+                            <p class="card-text text-muted">Figuras coleccionables estáticas con acabados detallados para exhibición.</p>
+                        </div>
+                        <a href="DetalleProducto.html?id=3" class="btn btn-outline-primary w-100 mt-3">
+                            <i class="bi bi-box-seam me-1"></i> Ver Productos
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- MODAL CARRITO DE COMPRAS -->
+    <div class="modal fade" id="modalCarrito" tabindex="-1" aria-labelledby="modalCarritoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="modalCarritoLabel">
+                        <i class="bi bi-cart3 me-2"></i>Tu Carrito de Compras
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div id="listaCarrito"></div>
+                </div>
+
+                <div class="modal-footer d-flex justify-content-between align-items-center">
+                    <div>
+                        <span class="fw-bold">Total:</span>
+                        <span id="totalCarrito" class="fs-5 fw-bold text-success ms-1">$0</span>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-outline-danger btn-sm" onclick="vaciarCarrito()">Vaciar</button>
+                        <button class="btn btn-success btn-sm">Finalizar Compra</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../JavaScript/MenuDesplegable.js"></script>
+    <script src="../JavaScript/Carrito.js"></script>
+</body>
+
+</html>

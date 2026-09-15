@@ -1,0 +1,59 @@
+body{
+    background-color: gray;
+}
+
+.colorBarra{
+    background-color: aqua;
+}
+
+.botonCuenta{
+    background-color: blue;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    padding: 8px 16px;
+}
+
+.imagen-carrusel{
+    height: 300px;
+    object-fit: cover;
+}
+
+.carrucelProducto{
+    border: 2xp solid #ddd;
+    background-color: #f8f9fa;
+}
+
+/* Selecciona todas las tarjetas dentro de las páginas */
+.card{
+    /* Define una transición suave de 0.2 segundos para el movimiento y la sombra */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    /* Quita el borde por defecto de Bootstrap */
+    border: none;
+    /* Redondea las esquinas de las tarjetas */
+    border-radius: 12px;
+    /* Evita que las imágenes o contenido se salgan de las esquinas redondeadas */
+    overflow: hidden;
+}
+
+/* Efecto que se dispara cuando el usuario pasa el cursor sobre la tarjeta */
+.card:hover {
+    /* Eleva la tarjeta 5 píxeles hacia arriba */
+    transform: translateY(-5px);
+    /* Aplica una sombra más pronunciada para dar efecto de flotación */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Aplica formato fijo a las imágenes superiores de las tarjetas */
+.card-img-top {
+    /* Establece una altura fija para que todas las tarjetas midan lo mismo */
+    height: 200px;
+    /* Recorta y ajusta la imagen proporcionalmente sin deformarla */
+    object-fit: cover;
+}
+
+/* Ajuste de imágenes para tarjetas de productos */
+.card-img-top {
+    height: 220px;
+    object-fit: contain; /* Mantiene la proporción de la imagen sin recortarla */
+}
