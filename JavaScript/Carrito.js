@@ -1,8 +1,16 @@
 // Inventario simulado
 const productosDisponibles = [
   { id: 1, nombre: "Pinta tu Juguete", precio: 12990, stock: 5, imagen: "../Img/Pinta tu juguete 1.jpe" },
+
   { id: 2, nombre: "Robot de Madera", precio: 15990, stock: 3, imagen: "../Img/Robot madera 1.jpe" },
-  { id: 3, nombre: "Colección Creativa", precio: 19990, stock: 8, imagen: "../Img/Pinta tu juguete 2.jpg" }
+
+  { id: 3, nombre: "Colección Creativa", precio: 19990, stock: 8, imagen: "../Img/Pinta tu juguete 2.jpg" },
+
+  { id: 4, nombre: "Kit de Dinosaurios para Armar", precio: 18990, stock: 6, imagen: "../Img/kit de dinosarios para armar.png" },
+
+  { id: 5, nombre: "Tren de Madera Magnético", precio: 21990, stock: 7, imagen: "../Img/tren de madera magnetico.png" },
+
+  { id: 6, nombre: "Mini Laboratorio de Ciencias", precio: 24990, stock: 5, imagen: "../Img/Mini laboratorio de ciencias.png" }
 ];
 
 // Obtener carrito asegurando que cada objeto tenga cantidad válida
@@ -17,6 +25,26 @@ function obtenerCarrito() {
 // Guardar carrito
 function guardarCarrito(carrito) {
   localStorage.setItem("carrito", JSON.stringify(carrito));
+}
+
+// Actualizar cantidad visible en el icono del carrito
+function actualizarContadorCarrito() {
+
+  const contador = document.getElementById("contadorCarrito");
+
+  if (!contador) return;
+
+  const carrito = obtenerCarrito();
+
+  const cantidadTotal = carrito.reduce(
+    (total, item) => total + Number(item.cantidad),
+    0
+  );
+
+  contador.textContent = cantidadTotal;
+
+  contador.classList.remove("d-none");
+
 }
 
 // Agregar producto respetando stock
@@ -99,6 +127,9 @@ function obtenerTotalCarrito() {
 
 // Renderizar contenido en el HTML
 function renderizarCarritoModal() {
+
+  actualizarContadorCarrito();
+
   const contenedor = document.getElementById("listaCarrito");
   const elementoTotal = document.getElementById("totalCarrito");
   if (!contenedor) return;
@@ -137,3 +168,7 @@ function renderizarCarritoModal() {
     elementoTotal.textContent = `$${obtenerTotalCarrito().toLocaleString("es-CL")}`;
   }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  actualizarContadorCarrito();
+});
