@@ -233,3 +233,115 @@ body {
 
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.18);
 }
+
+/* =========================
+   LOGO NAVBAR
+========================= */
+
+.logo-navbar {
+    height: 55px;
+    width: auto;
+    object-fit: contain;
+}
+
+.logo-navbar{
+  height: 55px;   /* prueba con 55px, 60px o 70px */
+  width: auto;
+  object-fit: contain;
+}
+
+.navbar{
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+#iconoPerfil {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.icono-robot-nav {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+#iconoPerfil:hover .icono-robot-nav {
+  transform: scale(1.08);
+  opacity: 0.8;
+}
+
+.icono-robot-nav {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.texto-login {
+  color: #111111;
+  font-size: 0.95rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+#iconoPerfil:hover .icono-robot-nav {
+  transform: scale(1.08);
+}
+
+#iconoPerfil:hover .texto-login {
+  text-decoration: underline;
+}
+
+/* =========================
+   CARRITO NAVBAR
+========================= */
+
+#btnCarrito {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+  width: 34px;
+  height: 34px;
+}
+.icono-carrito {
+  color: #111111;
+  font-size: 1.55rem;
+  transition: transform 0.2s ease;
+}
+
+#btnCarrito:hover .icono-carrito {
+  transform: scale(1.08);
+}
+
+
+/* Contador del carrito */
+
+.contador-carrito {
+  position: absolute;
+
+  top: -7px;
+  right: -8px;
+
+  min-width: 20px;
+  height: 20px;
+
+  padding: 0 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #111111;
+  color: #FFFFFF;
+
+  border: 2px solid #82CDE3;
+  border-radius: 50px;
+
+  font-size: 0.7rem;
+  font-weight: 700;
+}
