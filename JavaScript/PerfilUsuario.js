@@ -20,23 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (inputNombre) inputNombre.value = usuario.nombre;
   if (inputCorreo) inputCorreo.value = usuario.correo;
 
-  // Mostrar botón de Panel Admin en el centro si es Administrador
-  if (usuario.rol === "Administrador") {
-    const contenedorBotones = document.querySelector(".card-body") || document.querySelector("main");
-    if (contenedorBotones && !document.getElementById("btnIrAdminPerfil")) {
-      const btnAdminPerfil = document.createElement("a");
-      btnAdminPerfil.id = "btnIrAdminPerfil";
-      btnAdminPerfil.href = "PanelAdmin.html";
-      btnAdminPerfil.className = "btn btn-warning w-100 fw-bold mb-2";
-      btnAdminPerfil.innerHTML = `<i class="bi bi-gear-fill me-1"></i> Ir al Panel de Administración`;
-      
-      const btnVolver = document.querySelector("a[href='PaginaPrincipal.html']") || document.getElementById("btnVolver");
-      if (btnVolver) {
-        btnVolver.parentNode.insertBefore(btnAdminPerfil, btnVolver);
-      }
-    }
-  }
-
+ 
   // --- LÓGICA DEL MÉTODO DE PAGO ---
 document.addEventListener("DOMContentLoaded", () => {
   const selectPago = document.getElementById("selectMetodoPago");

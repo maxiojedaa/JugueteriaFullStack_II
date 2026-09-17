@@ -51,8 +51,11 @@
 
                 <!-- Iconos laterales de perfil y carrito -->
                 <div class="d-flex align-items-center gap-3">
-                    <a href="Usuario.html" class="text-dark fs-4" title="Perfil"><i class="bi bi-person"></i></a>
-            
+                    <!-- Contenedor dinámico para ValidarLogin.js -->
+                    <div id="contenedorUsuario">
+                        <a href="Usuario.html" class="text-dark fs-4" title="Perfil"><i class="bi bi-person"></i></a>
+                    </div>
+
 
                     <button id="btnCarrito" class="btn border-0 bg-transparent position-relative p-0" type="button"
                         data-bs-toggle="modal" data-bs-target="#modalCarrito" onclick="renderizarCarritoModal()"
@@ -163,6 +166,53 @@
     </main>
 
 
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white w-100 mt-5 pt-5 pb-3">
+        <div class="container">
+            <div class="row">
+                <!-- Información de la tienda -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold">Pixel & Toys</h5>
+                    <p class="text-white-50">
+                        Encuentra juguetes para aprender, crear y disfrutar.
+                        Tenemos alternativas para todas las edades.
+                    </p>
+                </div>
+
+                <!-- Navegación -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold">Navegación</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="PaginaPrincipal.html"
+                                class="text-white-50 text-decoration-none">Inicio</a></li>
+                        <li class="mb-2"><a href="Novedades.html"
+                                class="text-white-50 text-decoration-none">Novedades</a></li>
+                        <li class="mb-2"><a href="Ofertas.html" class="text-white-50 text-decoration-none">Ofertas</a>
+                        </li>
+                        <li class="mb-2"><a href="Noticias.html" class="text-white-50 text-decoration-none">Noticias</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Redes sociales -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold">Síguenos</h5>
+                    <div class="d-flex gap-3 fs-4">
+                        <a href="#" class="text-white" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-white" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="border-secondary">
+
+            <div class="text-center text-white-50">
+                <small>© 2026 Pixel & Toys - Todos los derechos reservados.</small>
+            </div>
+        </div>
+    </footer>
+
     <!-- MODAL DEL CARRITO -->
     <div class="modal fade" id="modalCarrito" tabindex="-1" aria-labelledby="modalCarritoLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -195,7 +245,8 @@
     <!-- Bootstrap Bundle JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Scripts JavaScript -->
+    <!-- Scripts JavaScript (Incluye ValidarLogin para persistir sesión) -->
+    <script src="../JavaScript/ValidarLogin.js"></script>
     <script src="../JavaScript/Carrito.js"></script>
     <script src="../JavaScript/MenuDesplegable.js"></script>
 </body>
