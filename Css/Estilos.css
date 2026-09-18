@@ -345,3 +345,99 @@ body {
   font-size: 0.7rem;
   font-weight: 700;
 }
+
+/* Botón de favoritos */
+.btn-favorito i {
+    color: #6c757d;
+    font-size: 1.3rem;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+/* Corazón cuando está en favoritos */
+.btn-favorito.favorito-activo i {
+    color: red;
+}
+
+/* Pequeño efecto al pasar el mouse */
+.btn-favorito:hover i {
+    transform: scale(1.15);
+}
+
+.btn-favorito {
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 1px solid #dee2e6;
+}
+
+.btn-favorito i {
+    font-size: 1.4rem;
+    color: #6c757d;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-favorito.favorito-activo i {
+    color: #dc3545;
+}
+
+.btn-favorito:hover i {
+    transform: scale(1.15);
+}
+
+/* Botón de favoritos */
+
+.btn-favorito {
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border: 1px solid #dee2e6;
+
+    background-color: white;
+}
+
+
+/* Corazón normal */
+
+.btn-favorito i {
+    font-size: 1.4rem;
+
+    color: #6c757d;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+/* Corazón seleccionado */
+
+.favoritos-nav {
+    list-style: none;
+}
+
+.favoritos-nav .nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+}
+
+.favoritos-nav .bi-heart {
+    font-size: 1.4rem;
+    color: #111;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.favoritos-nav .nav-link:hover .bi-heart {
+    color: #dc3545;
+    transform: scale(1.10);
+}
