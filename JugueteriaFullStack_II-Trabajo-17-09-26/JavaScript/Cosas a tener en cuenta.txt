@@ -1,8 +1,0 @@
-El correo y la contraseña de el usuario seria estos: email: "usuario@gmail.com", contraseña: "clavelogin".
-
-El let sive para declarar variables cuyo valor se puede cambiar después.
-El const sirve para declarar constantes, es decir, variables cuyo valor no se puede reasignar una vez que ha sido establecido.
-
-El .some sirve para comprobar si al menos un elemento de un arreglo (array) cumple con una condición específic.
-El .toLowerCase sirve para convertir todas las letras mayúsculas de una cadena de texto (string) en minúsculas.
-El localStorage en JavaScript sirve para guardar información de forma persistente en el navegador del usuario sin que se borre al cerrar la pestaña o reiniciar el equipo.
