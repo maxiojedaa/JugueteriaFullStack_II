@@ -12,23 +12,31 @@ function formatearFecha(fechaISO) {
   return `${dia}-${mes}-${anio}`;
 }
 
-function renderizarTablaPedidos() {
+function renderizarTablaPedidos(filtro = {}) {
   const tabla = document.getElementById("tablaPedidos");
   if (!tabla) return;
 
   const pedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
 
   // Ordenar del más reciente al más antiguo
-  const pedidosOrdenados = [...pedidos].sort(
+  let pedidosOrdenados = [...pedidos].sort(
     (a, b) => new Date(b.fecha) - new Date(a.fecha)
   );
+
+  // Filtrar por rango de fechas si corresponde (formato "YYYY-MM-DD")
+  if (filtro.desde) {
+    pedidosOrdenados = pedidosOrdenados.filter(p => p.fecha >= filtro.desde);
+  }
+  if (filtro.hasta) {
+    pedidosOrdenados = pedidosOrdenados.filter(p => p.fecha <= filtro.hasta);
+  }
 
   tabla.innerHTML = "";
 
   if (pedidosOrdenados.length === 0) {
     tabla.innerHTML = `
       <tr><td colspan="5" class="text-center text-muted py-3">
-        Aún no se han registrado pedidos.
+        No hay pedidos que coincidan con el filtro.
       </td></tr>`;
     return;
   }
@@ -50,10 +58,67 @@ function renderizarTablaPedidos() {
   });
 }
 
+// Copia de respaldo del inventario base, por si el Dashboard se abre
+// antes de que Carrito.js haya sembrado el localStorage alguna vez.
+const productosDisponiblesBaseRespaldo = [
+  { id: 1, nombre: "Pinta tu Juguete", precio: 12990, stock: 5, imagen: "../Img/Pinta tu juguete 1.jpe" },
+  { id: 2, nombre: "Robot de Madera", precio: 15990, stock: 3, imagen: "../Img/Robot madera 1.jpe" },
+  { id: 3, nombre: "Colección Creativa", precio: 19990, stock: 8, imagen: "../Img/Pinta tu juguete 2.jpg" },
+  { id: 4, nombre: "Kit de Dinosaurios para Armar", precio: 18990, stock: 6, imagen: "../Img/kit de dinosarios para armar.png" },
+  { id: 5, nombre: "Tren de Madera Magnético", precio: 21990, stock: 7, imagen: "../Img/tren de madera magnetico.png" },
+  { id: 6, nombre: "Mini Laboratorio de Ciencias", precio: 24990, stock: 5, imagen: "../Img/Mini laboratorio de ciencias.png" }
+];
+
+function renderizarStockTotal() {
+  const elemento = document.getElementById("stockTotal");
+  if (!elemento) return;
+
+  let inventario = JSON.parse(localStorage.getItem("productosDisponibles"));
+  if (!inventario) {
+    inventario = productosDisponiblesBaseRespaldo;
+    localStorage.setItem("productosDisponibles", JSON.stringify(inventario));
+  }
+
+  const totalStock = inventario.reduce((total, p) => total + Number(p.stock), 0);
+
+  elemento.textContent = totalStock;
+}
+
+function renderizarPedidosTotal() {
+  const elemento = document.getElementById("pedidosTotal");
+  if (!elemento) return;
+
+  const pedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
+  elemento.textContent = pedidos.length;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   renderizarTablaPedidos();
   renderizarStockTotal();
   renderizarPedidosTotal();
+
+  // Filtro de pedidos por rango de fechas (solo si esos elementos existen en la página)
+  const inputDesde = document.getElementById("filtroFechaDesde");
+  const inputHasta = document.getElementById("filtroFechaHasta");
+  const btnFiltrar = document.getElementById("btnFiltrarFecha");
+  const btnLimpiar = document.getElementById("btnLimpiarFiltro");
+
+  if (btnFiltrar) {
+    btnFiltrar.addEventListener("click", () => {
+      renderizarTablaPedidos({
+        desde: inputDesde.value || null,
+        hasta: inputHasta.value || null
+      });
+    });
+  }
+
+  if (btnLimpiar) {
+    btnLimpiar.addEventListener("click", () => {
+      inputDesde.value = "";
+      inputHasta.value = "";
+      renderizarTablaPedidos();
+    });
+  }
 
   const tabla = document.getElementById("tablaPedidos");
   const modalEl = document.getElementById("modalDetallePedido");
@@ -85,37 +150,3 @@ document.addEventListener("DOMContentLoaded", () => {
     modalDetalle.show();
   });
 });
-
-
-
-function renderizarStockTotal() {
-  const elemento = document.getElementById("stockTotal");
-  if (!elemento) return;
-  let inventario = JSON.parse(localStorage.getItem("productosDisponibles"));
-  if (!inventario) {
-    inventario = productosDisponiblesBaseRespaldo;
-    localStorage.setItem("productosDisponibles", JSON.stringify(inventario));
-  }
-  const totalStock = inventario.reduce((total, p) => total + Number(p.stock), 0);
-  elemento.textContent = totalStock;
-}
-
-
-const productosDisponiblesBaseRespaldo = [
-  { id: 1, nombre: "Pinta tu Juguete", precio: 12990, stock: 5, imagen: "../Img/Pinta tu juguete 1.jpe" },
-  { id: 2, nombre: "Robot de Madera", precio: 15990, stock: 3, imagen: "../Img/Robot madera 1.jpe" },
-  { id: 3, nombre: "Colección Creativa", precio: 19990, stock: 8, imagen: "../Img/Pinta tu juguete 2.jpg" },
-  { id: 4, nombre: "Kit de Dinosaurios para Armar", precio: 18990, stock: 6, imagen: "../Img/kit de dinosarios para armar.png" },
-  { id: 5, nombre: "Tren de Madera Magnético", precio: 21990, stock: 7, imagen: "../Img/tren de madera magnetico.png" },
-  { id: 6, nombre: "Mini Laboratorio de Ciencias", precio: 24990, stock: 5, imagen: "../Img/Mini laboratorio de ciencias.png" }
-];
-
-
-
-function renderizarPedidosTotal() {
-  const elemento = document.getElementById("pedidosTotal");
-  if (!elemento) return;
-
-  const pedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
-  elemento.textContent = pedidos.length;
-}

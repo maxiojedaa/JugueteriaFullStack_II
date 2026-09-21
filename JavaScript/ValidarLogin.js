@@ -23,6 +23,13 @@ document.addEventListener("DOMContentLoaded", () => {
         </a>
       `;
     }
+
+    // Mostrar el botón de acceso al Dashboard solo si el usuario es Administrador
+    const navDashboard = document.getElementById("navDashboardAdmin");
+    if (navDashboard) {
+      const esAdministrador = usuarioLogueado && usuarioLogueado.rol === "Administrador";
+      navDashboard.classList.toggle("d-none", !esAdministrador);
+    }
   }
 
   // Ejecutamos la actualización al cargar la vista
