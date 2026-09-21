@@ -28,6 +28,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // Ejecutamos la actualización al cargar la vista
   actualizarUINavbar();
 
+  // 4. Mostrar el total de usuarios registrados (usado en el Dashboard)
+  function renderizarUsuariosTotal() {
+    const elemento = document.getElementById("usuariosTotal");
+    if (!elemento) return;
+
+    const listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || cuentasPorDefecto;
+    elemento.textContent = listaUsuarios.length;
+  }
+
+  renderizarUsuariosTotal();
+
   // 3. Manejo del formulario de Login
   const formLogin = document.getElementById("formLogin");
   if (formLogin) {

@@ -188,6 +188,19 @@ const productosDisponibles = [
   { id: 6, nombre: "Mini Laboratorio de Ciencias", precio: 24990, stock: 5, imagen: "../Img/Mini laboratorio de ciencias.png" }
 ];
 
+// Obtener el inventario actual (si no existe en localStorage, se crea desde la base)
+function obtenerProductosDisponibles() {
+  const guardados = JSON.parse(localStorage.getItem("productosDisponibles"));
+  if (guardados) return guardados;
+  localStorage.setItem("productosDisponibles", JSON.stringify(productosDisponibles));
+  return productosDisponibles;
+}
+
+// Guardar el inventario actualizado (por ejemplo, tras descontar stock)
+function guardarProductosDisponibles(productos) {
+  localStorage.setItem("productosDisponibles", JSON.stringify(productos));
+}
+
 // Obtener carrito asegurando que cada objeto tenga cantidad válida
 function obtenerCarrito() {
   const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
@@ -225,7 +238,7 @@ function actualizarContadorCarrito() {
 // Agregar producto respetando stock
 function agregarAlCarrito(productoId, cantidad) {
   const cantAgregar = Number(cantidad) || 1;
-  const productoBase = productosDisponibles.find(p => p.id === productoId);
+  const productoBase = obtenerProductosDisponibles().find(p => p.id === productoId);
   if (!productoBase) return alert("Producto no encontrado.");
 
   let carrito = obtenerCarrito();
@@ -265,7 +278,7 @@ function eliminarDelCarrito(productoId) {
 // Modificar cantidad con botones + / -
 function actualizarCantidad(productoId, nuevaCantidad) {
   const numCantidad = Number(nuevaCantidad);
-  const productoBase = productosDisponibles.find(p => p.id === productoId);
+  const productoBase = obtenerProductosDisponibles().find(p => p.id === productoId);
 
   if (numCantidad > productoBase.stock) {
     alert(`Stock máximo disponible: ${productoBase.stock}`);
@@ -390,6 +403,16 @@ function confirmarPedido() {
 
   pedidos.push(nuevoPedido);
   guardarPedidos(pedidos);
+
+  // Descontar el stock de cada producto comprado
+  const inventario = obtenerProductosDisponibles();
+  carrito.forEach(item => {
+    const producto = inventario.find(p => p.id === item.id);
+    if (producto) {
+      producto.stock = Math.max(0, producto.stock - item.cantidad);
+    }
+  });
+  guardarProductosDisponibles(inventario);
 
   localStorage.removeItem("carrito");
   renderizarCarritoModal();
