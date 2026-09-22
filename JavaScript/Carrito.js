@@ -193,18 +193,30 @@ function guardarPedidos(pedidos) {
 }
 
 // Confirmar el pedido: toma el carrito actual, lo registra y vacía el carrito
+<<<<<<< HEAD
 function confirmarPedido(mostrarAlerta = true) {
+=======
+function confirmarPedido() {
+>>>>>>> f4be6dfcef61bef27e91e4e5f2152f949502e295
   const carrito = obtenerCarrito();
 
   if (carrito.length === 0) {
     alert("Tu carrito está vacío.");
+<<<<<<< HEAD
     return false;
+=======
+    return;
+>>>>>>> f4be6dfcef61bef27e91e4e5f2152f949502e295
   }
 
   const usuarioLogueado = JSON.parse(localStorage.getItem("usuarioLogueado"));
   if (!usuarioLogueado) {
     alert("Debes iniciar sesión para confirmar tu pedido.");
+<<<<<<< HEAD
     return false;
+=======
+    return;
+>>>>>>> f4be6dfcef61bef27e91e4e5f2152f949502e295
   }
 
   const pedidos = obtenerPedidos();
@@ -242,11 +254,15 @@ function confirmarPedido(mostrarAlerta = true) {
   localStorage.removeItem("carrito");
   renderizarCarritoModal();
 
+<<<<<<< HEAD
   if (mostrarAlerta) {
     alert(`¡Pedido #${nuevoPedido.numero} confirmado con éxito!`);
   }
 
   return true;
+=======
+  alert(`¡Pedido #${nuevoPedido.numero} confirmado con éxito!`);
+>>>>>>> f4be6dfcef61bef27e91e4e5f2152f949502e295
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -255,6 +271,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 function procesarPago() {
+<<<<<<< HEAD
     // 1. Confirmar el pedido: esto valida el carrito y la sesión,
     //    guarda el pedido en localStorage y descuenta el stock.
     //    Le pasamos "false" para que no muestre su propio alert,
@@ -265,13 +282,41 @@ function procesarPago() {
     // sesión), ya mostró su propio alert explicando por qué, así que
     // no seguimos con el mensaje de pago.
     if (!pedidoConfirmado) {
+=======
+    // 1. Obtener los productos actuales del carrito (del localStorage o del array en memoria)
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+    // Validar que el carrito contenga elementos
+    if (carrito.length === 0) {
+        alert('Tu carrito está vacío. Agrega productos antes de pagar.');
+>>>>>>> f4be6dfcef61bef27e91e4e5f2152f949502e295
         return;
     }
 
     // 2. Mostrar el mensaje de confirmación de pago
     alert('¡Pago realizado correctamente! Muchas gracias por tu compra en Pixel&Toys.');
 
+<<<<<<< HEAD
     // 3. Cerrar el modal de Bootstrap automáticamente
+=======
+    // 3. Vaciar el carrito en localStorage y en memoria
+    localStorage.removeItem('carrito'); // o localStorage.setItem('carrito', JSON.stringify([]));
+    if (typeof productosCarrito !== 'undefined') {
+        productosCarrito = [];
+    }
+
+    // 4. Actualizar la interfaz (UI)
+    // Actualizar la lista interna del modal
+    renderizarCarritoModal();
+
+    // Actualizar el contador en la barra de navegación (badge)
+    const contador = document.getElementById('contadorCarrito');
+    if (contador) {
+        contador.textContent = '0';
+    }
+
+    // 5. Cerrar el modal de Bootstrap automáticamente
+>>>>>>> f4be6dfcef61bef27e91e4e5f2152f949502e295
     const modalElement = document.getElementById('modalCarrito');
     if (modalElement) {
         const modalInstance = bootstrap.Modal.getInstance(modalElement);
