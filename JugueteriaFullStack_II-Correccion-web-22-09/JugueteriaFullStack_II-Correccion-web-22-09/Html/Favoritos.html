@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Favoritos - Pixel & Toys</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- CSS del proyecto -->
+    <link rel="stylesheet" href="../Css/Estilos.css">
+</head>
+
+<body>
+
+    <!-- Barra superior sencilla -->
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav class="navbar navbar-expand-lg colorBarra px-4 py-2">
+        <div class="container-fluid">
+
+            <!-- Logo -->
+            <a class="navbar-brand" href="PaginaPrincipal.html">
+                <img src="../Img/LogoPixelToysIV.png" alt="Pixel & Toys" class="logo-navbar">
+            </a>
+
+
+            <!-- Botón hamburguesa -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarJugueteria"
+                aria-controls="navbarJugueteria" aria-expanded="false" aria-label="Abrir navegación">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+
+            <!-- Contenido del navbar -->
+            <div class="collapse navbar-collapse" id="navbarJugueteria">
+
+                <!-- Opciones -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    <!-- Categorías -->
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle fw-bold" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+
+                            CATEGORÍAS
+
+                        </a>
+
+                        <ul class="dropdown-menu">
+
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    Juguetes educativos
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    Juguetes creativos
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    Todos los productos
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="../Html/Novedades.html">
+                            NOVEDADES
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="../Html/Ofertas.html">
+                            OFERTAS
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="../Html/Noticias.html">
+                            NOTICIAS
+                        </a>
+                    </li>
+
+                </ul>
+
+                <li class="nav-item favoritos-nav me-4">
+                    <a class="nav-link" href="Favoritos.html" title="Favoritos" aria-label="Favoritos">
+
+                        <i class="bi bi-heart"></i>
+
+                    </a>
+                </li>
+
+
+                <!-- Usuario y carrito -->
+                <div class="d-flex align-items-center gap-3">
+
+                    <!-- Usuario -->
+                    <div class="position-relative">
+
+                        <button id="iconoPerfil" class="btn border-0 bg-transparent p-0 d-flex align-items-center gap-2"
+                            type="button" title="Iniciar sesión">
+
+                            <img src="../Img/LogoPixelToysIII.png" alt="Iniciar sesión" class="icono-robot-nav">
+
+                            <span id="textoLogin" class="texto-login">
+                                Iniciar sesión
+                            </span>
+
+                        </button>
+
+                        <div id="menuUsuario" class="card shadow p-2 position-absolute end-0 mt-2 d-none"
+                            style="width: 180px; z-index: 1000;">
+
+                            <p id="nombreUsuarioMenu" class="fw-bold mb-1 text-center small text-truncate">
+                            </p>
+
+                            <hr class="my-1">
+
+                            <button id="btnVerPerfil" class="btn btn-sm btn-light text-start w-100 mb-1">
+
+                                <i class="bi bi-person-circle me-1"></i>
+                                Ver Perfil
+
+                            </button>
+
+                            <button id="btnCerrarSesion" class="btn btn-sm btn-danger text-start w-100">
+
+                                <i class="bi bi-box-arrow-right me-1"></i>
+                                Cerrar Sesión
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Carrito -->
+                    <button id="btnCarrito" class="btn border-0 bg-transparent position-relative p-0" type="button"
+                        data-bs-toggle="modal" data-bs-target="#modalCarrito" onclick="renderizarCarritoModal()"
+                        title="Ver Carrito">
+
+                        <i class="bi bi-bag-fill icono-carrito"></i>
+
+                        <span id="contadorCarrito" class="contador-carrito d-none">
+                            0
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+    </nav>
+
+
+    <!-- Contenido -->
+    <main class="container py-5">
+
+        <div class="mb-4">
+
+            <h1 class="fw-bold">
+                <i class="bi bi-heart-fill text-danger me-2"></i>
+                Mis Favoritos
+            </h1>
+
+            <p class="text-muted">
+                Aquí encontrarás los productos que guardaste como favoritos.
+            </p>
+
+        </div>
+
+
+        <!-- Aquí JavaScript cargará los productos -->
+        <div id="lista-favoritos" class="row g-4">
+        </div>
+
+
+        <!-- Mensaje cuando no existen favoritos -->
+        <div id="favoritos-vacios" class="text-center py-5 d-none">
+
+            <i class="bi bi-heart display-1 text-muted"></i>
+
+            <h3 class="mt-3">
+                Aún no tienes favoritos
+            </h3>
+
+            <p class="text-muted">
+                Guarda productos que te interesen para encontrarlos aquí.
+            </p>
+
+            <a href="PaginaPrincipal.html" class="btn btn-primary">
+
+                Ver productos
+
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <script src="../JavaScript/Favoritos.js"></script>
+
+</body>
+
+</html>
