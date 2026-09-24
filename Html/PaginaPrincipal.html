@@ -55,19 +55,19 @@
             <ul class="dropdown-menu">
 
               <li>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="PaginaPrincipal.html?categoria=educativos">
                   Juguetes educativos
                 </a>
               </li>
 
               <li>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="PaginaPrincipal.html?categoria=creativos">
                   Juguetes creativos
                 </a>
               </li>
 
               <li>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="PaginaPrincipal.html">
                   Todos los productos
                 </a>
               </li>
@@ -282,11 +282,13 @@
 
   <!-- CATÁLOGO RÁPIDO DE PRODUCTOS (HU-9 y HU-16) -->
   <div class="container my-5">
-    <h3 class="text-center fw-bold mb-4">Productos Destacados</h3>
+    <h3 id="tituloProductos" class="text-center fw-bold mb-4">
+      Productos Destacados
+    </h3>
     <div id="listaProductos" class="row g-4">
 
       <!-- Producto 1 -->
-      <div class="col-md-4">
+      <div class="col-md-4" data-categoria="creativos">
         <div class="card h-100 shadow-sm">
 
           <a href="DetalleProducto.html?id=1">
@@ -328,7 +330,7 @@
       </div>
 
       <!-- Producto 2 -->
-      <div class="col-md-4">
+      <div class="col-md-4" data-categoria="educativos">
         <div class="card h-100 shadow-sm">
           <a href="DetalleProducto.html?id=2">
             <img src="../Img/Robot madera 1.jpe" class="card-img-top" style="height: 200px; object-fit: cover;"
@@ -352,7 +354,7 @@
 
 
       <!-- Producto 3 -->
-      <div class="col-md-4">
+      <div class="col-md-4" data-categoria="creativos">
         <div class="card h-100 shadow-sm">
 
           <a href="DetalleProducto.html?id=3">
@@ -379,7 +381,7 @@
       </div>
 
       <!-- Producto 4 -->
-      <div class="col-md-4">
+      <div class="col-md-4" data-categoria="educativos">
         <div class="card h-100 shadow-sm">
 
           <a href="DetalleProducto.html?id=4">
@@ -415,7 +417,7 @@
       </div>
 
       <!-- Producto 5 -->
-      <div class="col-md-4">
+      <div class="col-md-4" data-categoria="educativos">
         <div class="card h-100 shadow-sm">
 
           <a href="DetalleProducto.html?id=5">
@@ -454,7 +456,7 @@
       </div>
 
       <!-- Producto 6 -->
-      <div class="col-md-4">
+      <div class="col-md-4" data-categoria="educativos">
         <div class="card h-100 shadow-sm">
 
           <a href="DetalleProducto.html?id=6">
