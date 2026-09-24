@@ -101,14 +101,26 @@
           </li>
 
         </ul>
+        <!-- Buscador -->
+        <form id="formBuscador" class="buscador-navbar me-4" role="search">
+          <div class="input-group">
 
-        <li class="nav-item favoritos-nav me-4">
+            <span class="input-group-text">
+              <i class="bi bi-search"></i>
+            </span>
+
+            <input id="inputBuscador" type="search" class="form-control" placeholder="Buscar"
+              aria-label="Buscar productos">
+
+          </div>
+        </form>
+
+        <!-- Favoritos -->
+        <div class="favoritos-nav me-4">
           <a class="nav-link" href="Favoritos.html" title="Favoritos" aria-label="Favoritos">
-
             <i class="bi bi-heart"></i>
-
           </a>
-        </li>
+        </div>
 
 
         <!-- Usuario y carrito -->
@@ -271,7 +283,7 @@
   <!-- CATÁLOGO RÁPIDO DE PRODUCTOS (HU-9 y HU-16) -->
   <div class="container my-5">
     <h3 class="text-center fw-bold mb-4">Productos Destacados</h3>
-    <div class="row g-4">
+    <div id="listaProductos" class="row g-4">
 
       <!-- Producto 1 -->
       <div class="col-md-4">
@@ -481,6 +493,11 @@
       </div>
 
     </div> <!-- Cierre del <div class="row g-4"> -->
+    <p id="sinResultados" class="text-center text-muted mt-4 d-none">
+
+      No encontramos productos que coincidan con tu búsqueda.
+
+    </p>
   </div> <!-- Cierre del <div class="container my-5"> del catálogo -->
 
 
@@ -548,8 +565,8 @@
                 </div>
                 <div class="row g-2">
                   <div class="col-6">
-                    <input type="text" id="expTarjetaCheckout" class="form-control form-control-sm" placeholder="Dia/Mes"
-                      maxlength="5">
+                    <input type="text" id="expTarjetaCheckout" class="form-control form-control-sm"
+                      placeholder="Dia/Mes" maxlength="5">
                   </div>
                   <div class="col-6">
                     <input type="password" id="cvcTarjetaCheckout" class="form-control form-control-sm"
@@ -657,7 +674,7 @@
   <script src="../JavaScript/MenuDesplegable.js"></script>
   <script src="../JavaScript/Carrito.js"></script>
   <script src="../JavaScript/Favoritos.js"></script>
-</body>
+  <script src="../JavaScript/Buscador.js"></script>
 </body>
 
 </html>
