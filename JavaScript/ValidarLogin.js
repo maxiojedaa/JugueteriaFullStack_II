@@ -10,7 +10,21 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("usuarios", JSON.stringify(cuentasPorDefecto));
   }
 
-  // 2. FUNCIÓN PARA ACTUALIZAR EL NAVBAR SI HAY SESIÓN ACTIVA
+  // 2. FUNCIÓN PARA MOSTRAR ALERTAS TOAST DE BOOTSTRAP
+  function lanzarToast(mensaje, esExito = true) {
+    const toastEl = document.getElementById("appToast");
+    const toastMsg = document.getElementById("toastMessage");
+
+    if (!toastEl || !toastMsg) return;
+
+    toastMsg.textContent = mensaje;
+    toastEl.className = `toast align-items-center text-white border-0 bg-${esExito ? 'success' : 'danger'}`;
+
+    const toast = new bootstrap.Toast(toastEl, { delay: 3000 });
+    toast.show();
+  }
+
+  // 3. FUNCIÓN PARA ACTUALIZAR EL NAVBAR SI HAY SESIÓN ACTIVA
   function actualizarUINavbar() {
     const usuarioLogueado = JSON.parse(localStorage.getItem("usuarioLogueado"));
     const contenedor = document.getElementById("contenedorUsuario");
@@ -18,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (contenedor && usuarioLogueado) {
       contenedor.innerHTML = `
         <a href="Usuario.html" class="text-dark fw-bold text-decoration-none d-flex align-items-center gap-2" title="Perfil">
-          <i class="bi bi-robot fs-4"></i>
+          <i class="bi bi-person-circle fs-4"></i>
           <span>${usuarioLogueado.nombre}</span>
         </a>
       `;
@@ -46,29 +60,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderizarUsuariosTotal();
 
-  // 3. Manejo del formulario de Login
-  const formLogin = document.getElementById("formLogin");
+  // 5. Manejo del formulario de Login
+  const formLogin = document.getElementById("formLogin") || document.querySelector("form");
+
   if (formLogin) {
-    formLogin.addEventListener("submit", function (e) {
+    formLogin.addEventListener("submit", (e) => {
       e.preventDefault();
 
-      const emailIngresado = document.getElementById("emailLogin").value.trim();
-      const passIngresada = document.getElementById("pwdLogin").value.trim();
+      const emailIngresado = (document.getElementById("emailLogin") || document.getElementById("email") || {}).value?.trim() || "";
+      const passIngresada = (document.getElementById("pwdLogin") || document.getElementById("pwd") || {}).value?.trim() || "";
 
       const listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || cuentasPorDefecto;
 
-      // Buscar usuario
+      // Buscar usuario en el listado
       const usuarioEncontrado = listaUsuarios.find(
         u => u.email.toLowerCase() === emailIngresado.toLowerCase()
       );
 
       if (!usuarioEncontrado) {
-        alert("Error: El correo electrónico no está registrado.");
+        lanzarToast("El correo electrónico no está registrado.", false);
         return;
       }
 
       if (usuarioEncontrado.pass !== passIngresada) {
-        alert("Error: Contraseña incorrecta.");
+        lanzarToast("Contraseña incorrecta. Inténtalo de nuevo.", false);
         return;
       }
 
@@ -81,9 +96,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       localStorage.setItem("usuarioLogueado", JSON.stringify(usuarioLogueado));
 
-      // Redireccionar
-      // Redireccionar (Todos entran a la tienda)
-      window.location.href = "PaginaPrincipal.html";
+      lanzarToast("¡Inicio de sesión exitoso! Redirigiendo...", true);
+
+      setTimeout(() => {
+        window.location.href = "PaginaPrincipal.html";
+      }, 1500);
     });
   }
 });

@@ -78,31 +78,18 @@ if (producto) {
     document.title = producto.nombre + " - Juguetería Chile";
 
     document.getElementById("nombreProducto").textContent = producto.nombre;
-
     document.getElementById("precioProducto").textContent = producto.precio;
-
     document.getElementById("imagenProducto").src = producto.imagen;
-
     document.getElementById("imagenProducto").alt = producto.nombre;
-
-    document.getElementById("descripcionProducto").textContent =
-        producto.descripcion;
-
+    document.getElementById("descripcionProducto").textContent = producto.descripcion;
     document.getElementById("stockProducto").textContent = producto.stock;
+    document.getElementById("categoriaProducto").textContent = producto.categoria;
 
-    document.getElementById("categoriaProducto").textContent =
-        producto.categoria;
-
-
-    document.getElementById("btnAgregarCarrito").addEventListener(
-        "click",
-        function () {
-            agregarAlCarrito(producto.id);
-        }
-    );
+    document.getElementById("btnAgregarCarrito").addEventListener("click", function () {
+        agregarAlCarrito(producto.id);
+    });
 
 } else {
-
-    document.getElementById("nombreProducto").textContent =
-        "Producto no encontrado";
+    // Si el producto no se encuentra, redirige a la vista Error404.html
+    window.location.href = "Error404.html";
 }

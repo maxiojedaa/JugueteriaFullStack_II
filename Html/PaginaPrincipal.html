@@ -55,19 +55,19 @@
             <ul class="dropdown-menu">
 
               <li>
-                <a class="dropdown-item" href="PaginaPrincipal.html?categoria=educativos">
+                <a class="dropdown-item" href="#">
                   Juguetes educativos
                 </a>
               </li>
 
               <li>
-                <a class="dropdown-item" href="PaginaPrincipal.html?categoria=creativos">
+                <a class="dropdown-item" href="#">
                   Juguetes creativos
                 </a>
               </li>
 
               <li>
-                <a class="dropdown-item" href="PaginaPrincipal.html">
+                <a class="dropdown-item" href="#">
                   Todos los productos
                 </a>
               </li>
@@ -101,26 +101,14 @@
           </li>
 
         </ul>
-        <!-- Buscador -->
-        <form id="formBuscador" class="buscador-navbar me-4" role="search">
-          <div class="input-group">
 
-            <span class="input-group-text">
-              <i class="bi bi-search"></i>
-            </span>
-
-            <input id="inputBuscador" type="search" class="form-control" placeholder="Buscar"
-              aria-label="Buscar productos">
-
-          </div>
-        </form>
-
-        <!-- Favoritos -->
-        <div class="favoritos-nav me-4">
+        <li class="nav-item favoritos-nav me-4">
           <a class="nav-link" href="Favoritos.html" title="Favoritos" aria-label="Favoritos">
+
             <i class="bi bi-heart"></i>
+
           </a>
-        </div>
+        </li>
 
 
         <!-- Usuario y carrito -->
@@ -282,13 +270,11 @@
 
   <!-- CATÁLOGO RÁPIDO DE PRODUCTOS (HU-9 y HU-16) -->
   <div class="container my-5">
-    <h3 id="tituloProductos" class="text-center fw-bold mb-4">
-      Productos Destacados
-    </h3>
-    <div id="listaProductos" class="row g-4">
+    <h3 class="text-center fw-bold mb-4">Productos Destacados</h3>
+    <div class="row g-4">
 
       <!-- Producto 1 -->
-      <div class="col-md-4" data-categoria="creativos">
+      <div class="col-md-4">
         <div class="card h-100 shadow-sm">
 
           <a href="DetalleProducto.html?id=1">
@@ -330,7 +316,7 @@
       </div>
 
       <!-- Producto 2 -->
-      <div class="col-md-4" data-categoria="educativos">
+      <div class="col-md-4">
         <div class="card h-100 shadow-sm">
           <a href="DetalleProducto.html?id=2">
             <img src="../Img/Robot madera 1.jpe" class="card-img-top" style="height: 200px; object-fit: cover;"
@@ -354,7 +340,7 @@
 
 
       <!-- Producto 3 -->
-      <div class="col-md-4" data-categoria="creativos">
+      <div class="col-md-4">
         <div class="card h-100 shadow-sm">
 
           <a href="DetalleProducto.html?id=3">
@@ -381,7 +367,7 @@
       </div>
 
       <!-- Producto 4 -->
-      <div class="col-md-4" data-categoria="educativos">
+      <div class="col-md-4">
         <div class="card h-100 shadow-sm">
 
           <a href="DetalleProducto.html?id=4">
@@ -417,7 +403,7 @@
       </div>
 
       <!-- Producto 5 -->
-      <div class="col-md-4" data-categoria="educativos">
+      <div class="col-md-4">
         <div class="card h-100 shadow-sm">
 
           <a href="DetalleProducto.html?id=5">
@@ -456,7 +442,7 @@
       </div>
 
       <!-- Producto 6 -->
-      <div class="col-md-4" data-categoria="educativos">
+      <div class="col-md-4">
         <div class="card h-100 shadow-sm">
 
           <a href="DetalleProducto.html?id=6">
@@ -495,11 +481,6 @@
       </div>
 
     </div> <!-- Cierre del <div class="row g-4"> -->
-    <p id="sinResultados" class="text-center text-muted mt-4 d-none">
-
-      No encontramos productos que coincidan con tu búsqueda.
-
-    </p>
   </div> <!-- Cierre del <div class="container my-5"> del catálogo -->
 
 
@@ -567,8 +548,8 @@
                 </div>
                 <div class="row g-2">
                   <div class="col-6">
-                    <input type="text" id="expTarjetaCheckout" class="form-control form-control-sm"
-                      placeholder="Dia/Mes" maxlength="5">
+                    <input type="text" id="expTarjetaCheckout" class="form-control form-control-sm" placeholder="Dia/Mes"
+                      maxlength="5">
                   </div>
                   <div class="col-6">
                     <input type="password" id="cvcTarjetaCheckout" class="form-control form-control-sm"
@@ -676,7 +657,7 @@
   <script src="../JavaScript/MenuDesplegable.js"></script>
   <script src="../JavaScript/Carrito.js"></script>
   <script src="../JavaScript/Favoritos.js"></script>
-  <script src="../JavaScript/Buscador.js"></script>
+</body>
 </body>
 
 </html>

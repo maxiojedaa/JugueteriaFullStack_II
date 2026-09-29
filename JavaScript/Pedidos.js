@@ -47,18 +47,7 @@ function renderizarTablaPedidos(filtro = {}) {
       <td class="fw-semibold">#${pedido.numero}</td>
       <td>${pedido.usuario}</td>
       <td>${formatearFecha(pedido.fecha)}</td>
-      <td>
-        <div class="dropdown">
-          <button class="badge ${colorEstado[pedido.estado] || "bg-secondary"} border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown">
-            ${pedido.estado}
-          </button>
-          <ul class="dropdown-menu">
-            ${Object.keys(colorEstado).map(estado => `
-              <li><a class="dropdown-item btn-cambiar-estado" href="#" data-numero="${pedido.numero}" data-estado="${estado}">${estado}</a></li>
-            `).join("")}
-          </ul>
-        </div>
-      </td>
+      <td><span class="badge ${colorEstado[pedido.estado] || "bg-secondary"}">${pedido.estado}</span></td>
       <td class="text-end">
         <button class="btn btn-sm btn-outline-secondary btn-ver-detalle" data-numero="${pedido.numero}">
           <i class="bi bi-eye"></i> Ver
@@ -67,18 +56,6 @@ function renderizarTablaPedidos(filtro = {}) {
     `;
     tabla.appendChild(fila);
   });
-}
-
-// Cambia el estado de un pedido y vuelve a pintar la tabla
-function cambiarEstadoPedido(numero, nuevoEstado) {
-  const pedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
-  const pedido = pedidos.find(p => p.numero === numero);
-  if (!pedido) return;
-
-  pedido.estado = nuevoEstado;
-  localStorage.setItem("pedidos", JSON.stringify(pedidos));
-
-  renderizarTablaPedidos();
 }
 
 // Copia de respaldo del inventario base, por si el Dashboard se abre
@@ -144,20 +121,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const tabla = document.getElementById("tablaPedidos");
-
-  // Cambiar estado desde el dropdown (funciona aunque esta página no tenga el modal de detalle)
-  if (tabla) {
-    tabla.addEventListener("click", (e) => {
-      const opcion = e.target.closest(".btn-cambiar-estado");
-      if (!opcion) return;
-      e.preventDefault();
-
-      const numero = Number(opcion.dataset.numero);
-      const nuevoEstado = opcion.dataset.estado;
-      cambiarEstadoPedido(numero, nuevoEstado);
-    });
-  }
-
   const modalEl = document.getElementById("modalDetallePedido");
   if (!tabla || !modalEl) return;
 

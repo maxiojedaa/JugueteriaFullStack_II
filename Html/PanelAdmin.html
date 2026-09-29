@@ -21,6 +21,25 @@
           <img src="../Img/LogoPixelToysII.png" alt="Pixel & Toys" style="height: 45px;">
         </a>
         <span class="badge bg-dark fs-6">Panel de Administración</span>
+        <ul class="navbar-nav . navbar-link-text-dark d-flex flex-row gap-4">
+          <li class="nav-item">
+            <a class="nav-link fw-bold" href="../Html/Dashboard.html">
+              Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-bold" href="../Html/UsuariosDashboard.html">
+              Usuarios
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-bold" href="../Html/PedidosDashboard.html">
+              Pedidos
+            </a>
+          </li>
+          
+          
+        </ul>
       </div>
       <div>
         <a href="PaginaPrincipal.html" class="btn btn-outline-dark btn-sm fw-bold">
@@ -32,83 +51,59 @@
   </header>
 
   <!-- CONTENIDO PRINCIPAL -->
-  <main class="container-fluid px-4 my-4 flex-grow-1">
-    <div class="row">
+  <main class="container my-5 flex-grow-1">
+    <div class="row g-4">
 
-      <!-- COLUMNA IZQUIERDA: PANEL LATERAL -->
-      <aside class="col-12 col-lg-2 h-100">
-        <div class="card border-0 shadow-sm rounded-8 p-3 h-100">
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link fw-bold border rounded mb-2" href="../Html/Dashboard.html">Dashboard</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link fw-bold border rounded mb-2" href="../Html/UsuariosDashboard.html">Usuarios</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link fw-bold border rounded mb-2" href="../Html/PedidosDashboard.html">Pedidos</a>
-            </li>
-          </ul>
+      <!-- FORMULARIO DE PRODUCTOS (Crear / Editar) -->
+      <div class="col-12 col-lg-4">
+        <div class="card border-0 shadow-sm rounded-4 p-3">
+          <h4 class="fw-bold mb-3 text-dark" id="formTitulo">Agregar Producto</h4>
+          <form id="formProducto">
+            <input type="hidden" id="productoId">
+
+            <div class="mb-3">
+              <label for="nombreProducto" class="form-label small fw-semibold">Nombre del producto</label>
+              <input type="text" class="form-control" id="nombreProducto" required placeholder="Ej: Robot de Madera">
+            </div>
+
+            <div class="mb-3">
+              <label for="precioProducto" class="form-label small fw-semibold">Precio ($)</label>
+              <input type="number" class="form-control" id="precioProducto" required placeholder="Ej: 15990">
+            </div>
+
+            <div class="mb-3">
+              <label for="imagenProducto" class="form-label small fw-semibold">Nombre de imagen (en Img/)</label>
+              <input type="text" class="form-control" id="imagenProducto" required placeholder="Ej: RobotMadera.jpg">
+            </div>
+
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-primary fw-semibold" id="btnGuardar">Guardar Producto</button>
+              <button type="button" class="btn btn-secondary fw-semibold d-none" id="btnCancelar">Cancelar
+                Edición</button>
+            </div>
+          </form>
         </div>
-      </aside>
+      </div>
 
-      <!-- COLUMNA DERECHA: CONTENIDO DE LA PÁGINA -->
-      <div class="col-12 col-lg-10">
-        <div class="row g-4">
-
-          <!-- FORMULARIO DE PRODUCTOS (Crear / Editar) -->
-          <div class="col-12 col-lg-4">
-            <div class="card border-0 shadow-sm rounded-4 p-3">
-              <h4 class="fw-bold mb-3 text-dark" id="formTitulo">Agregar Producto</h4>
-              <form id="formProducto">
-                <input type="hidden" id="productoId">
-
-                <div class="mb-3">
-                  <label for="nombreProducto" class="form-label small fw-semibold">Nombre del producto</label>
-                  <input type="text" class="form-control" id="nombreProducto" required placeholder="Ej: Robot de Madera">
-                </div>
-
-                <div class="mb-3">
-                  <label for="precioProducto" class="form-label small fw-semibold">Precio ($)</label>
-                  <input type="number" class="form-control" id="precioProducto" required placeholder="Ej: 15990">
-                </div>
-
-                <div class="mb-3">
-                  <label for="imagenProducto" class="form-label small fw-semibold">Nombre de imagen (en Img/)</label>
-                  <input type="text" class="form-control" id="imagenProducto" required placeholder="Ej: RobotMadera.jpg">
-                </div>
-
-                <div class="d-grid gap-2">
-                  <button type="submit" class="btn btn-primary fw-semibold" id="btnGuardar">Guardar Producto</button>
-                  <button type="button" class="btn btn-secondary fw-semibold d-none" id="btnCancelar">Cancelar
-                    Edición</button>
-                </div>
-              </form>
-            </div>
+      <!-- TABLA DE PRODUCTOS EN EXISTENCIA -->
+      <div class="col-12 col-lg-8">
+        <div class="card border-0 shadow-sm rounded-4 p-3 overflow-hidden">
+          <h4 class="fw-bold mb-3 text-dark">Inventario de Productos</h4>
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+              <thead class="table-dark">
+                <tr>
+                  <th>Imagen</th>
+                  <th>Nombre</th>
+                  <th>Precio</th>
+                  <th class="text-center">Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="tablaProductos">
+                <!-- Se puebla dinámicamente desde JavaScript -->
+              </tbody>
+            </table>
           </div>
-
-          <!-- TABLA DE PRODUCTOS EN EXISTENCIA -->
-          <div class="col-12 col-lg-8">
-            <div class="card border-0 shadow-sm rounded-4 p-3 overflow-hidden">
-              <h4 class="fw-bold mb-3 text-dark">Inventario de Productos</h4>
-              <div class="table-responsive">
-                <table class="table table-hover align-middle mb-0">
-                  <thead class="table-dark">
-                    <tr>
-                      <th>Imagen</th>
-                      <th>Nombre</th>
-                      <th>Precio</th>
-                      <th class="text-center">Acciones</th>
-                    </tr>
-                  </thead>
-                  <tbody id="tablaProductos">
-                    <!-- Se puebla dinámicamente desde JavaScript -->
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
 

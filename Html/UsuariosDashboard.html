@@ -17,10 +17,27 @@
     <header class="py-2" style="background-color: #81c8e4;">
         <div class="container-fluid px-4 d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center gap-4">
-                <a href="PaginaPrincipal.html">
-                    <img src="../Img/LogoPixelToysII.png" alt="Pixel & Toys" style="height: 45px;">
-                </a>
-                <span class="badge bg-dark fs-6">Panel de Administración</span>
+                <ul class="navbar-nav . navbar-link-text-dark d-flex flex-row gap-4">
+                    <a href="PaginaPrincipal.html">
+                        <img src="../Img/LogoPixelToysII.png" alt="Pixel & Toys" style="height: 45px;">
+                    </a>
+                    <span class="badge bg-dark fs-6">Panel de Administración</span>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="../Html/PanelAdmin.html">
+                            Productos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="../Html/Dashboard.html">
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="../Html/PedidosDashboard.html">
+                            Pedidos
+                        </a>
+                    </li>
+                </ul>
             </div>
 
             <!--<div class="d-flex align-items-right gap-4">
@@ -35,49 +52,25 @@
         </div>
     </header>
     <main class="container-fluid px-4 my-4 flex-grow-1">
-        <div class="row">
+        <div class="row g-4 mt-4">
+            <div class="col-12">
+                <div class="card border-0 shadow-sm rounded-8 p-3">
+                    <h5 style="text-align: center;" class="fw-bold mb-3 text-dark">Usuarios</h5>
 
-            <!-- COLUMNA IZQUIERDA: PANEL LATERAL -->
-            <aside class="col-12 col-lg-2 h-100">
-                <div class="card border-0 shadow-sm rounded-8 p-3 h-100">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link fw-bold border rounded mb-2" href="../Html/Dashboard.html">Dashboard</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link fw-bold border rounded mb-2" href="../Html/PanelAdmin.html">Productos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link fw-bold border rounded mb-2" href="../Html/PedidosDashboard.html">Pedidos</a>
-                        </li>
-                    </ul>
-                </div>
-            </aside>
-
-            <!-- COLUMNA DERECHA: CONTENIDO DE LA PÁGINA -->
-            <div class="col-12 col-lg-10">
-                <div class="row g-4 mt-4">
-                    <div class="col-12">
-                        <div class="card border-0 shadow-sm rounded-8 p-3">
-                            <h5 style="text-align: center;" class="fw-bold mb-3 text-dark">Usuarios</h5>
-
-                            <div class="table-responsive">
-                                <table class="table table-hover align-middle">
-                                    <thead>
-                                        <tr>
-                                            <th>Nombre</th>
-                                            <th>Correo</th>
-                                            <th>N° Pedidos</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tablaUsuarios">
-                                        <!-- Las filas se generan con JS -->
-                                    </tbody>
-                                </table>
-                            </div>
-
-                        </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Correo</th>
+                                    <th>N° Pedidos</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaUsuarios">
+                                <!-- Las filas se generan con JS -->
+                            </tbody>
+                        </table>
                     </div>
 
                 </div>
